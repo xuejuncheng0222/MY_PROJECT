@@ -1,17 +1,30 @@
-<!-- 主路由 -->
 <template>
   <div>
-    <p>这是主路由</p>
-    <router-view></router-view>
+    <el-container>
+      <el-aside width="200px">
+        <home-aside />
+      </el-aside>
+      <el-container>
+        <el-header>Header</el-header>
+        <el-main>
+          <router-view></router-view>
+        </el-main>
+      </el-container>
+    </el-container>
   </div>
 </template>
 <script>
+//用组件的形式封装这个功能
+import HomeAside from "../components/HomeAside.vue";
 export default {
   data() {
     return {};
   },
   methods: {},
   props: {},
+  components: {
+    HomeAside,
+  },
 };
 </script>
 <style scoped></style>
