@@ -1,5 +1,6 @@
 <template>
-  <div>xuejuncehng
+  <div>
+    <p>xuejuncehng</p>
     <el-checkbox v-model="checked">备选项</el-checkbox>
     <div>
       <el-progress :percentage="50"></el-progress>
@@ -8,6 +9,13 @@
       <el-progress :percentage="100" status="warning"></el-progress>
       <el-progress :percentage="50" status="exception"></el-progress>
     </div>
+    <p style="color: brown;">123</p>
+    <a href="www.baidu.com">baidu</a>
+    <img src="" alt="">
+    <ul>
+        <li>列表1</li>
+        <li>列表2</li>
+    </ul>
   </div>
   
 </template>
