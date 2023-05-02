@@ -9,34 +9,33 @@
       <el-progress :percentage="100" status="warning"></el-progress>
       <el-progress :percentage="50" status="exception"></el-progress>
     </div>
-    <p style="color: brown;">123</p>
+    <p style="color: brown">123</p>
     <a href="www.baidu.com">baidu</a>
-    <img src="" alt="">
+    <img src="" alt="" />
     <ul>
-        <li>列表1</li>
-        <li>列表2</li>
+      <li>列表1</li>
+      <li>列表2</li>
     </ul>
   </div>
-  
 </template>
 
 <script>
 export default {
   data() {
-      return {
-        checked: true
-      };
-    },
-  name: 'HelloWorld',
+    return {
+      checked: true,
+    };
+  },
+  name: "HelloWorld",
   props: {
-    msg: String
+    msg: String,
   },
   methods: {
-      format(percentage) {
-        return percentage === 100 ? '满' : `${percentage}%`;
-      }
-    }
-}
+    format(percentage) {
+      return percentage === 100 ? "满" : `${percentage}%`;
+    },
+  },
+};
 </script>
 
 <!-- Add "scoped" attribute to limit CSS to this component only -->
