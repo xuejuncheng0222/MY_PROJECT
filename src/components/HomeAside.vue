@@ -7,17 +7,21 @@
       @close="handleClose"
       :collapse="isCollapse"
     >
-      <el-menu-item v-for="val in noChildren" :key="val.name" index="1">
+      <el-menu-item v-for="val in noChildren" :key="val.name" :index="val.name">
         <i :class="`el-icon-${val.icon}`"></i>
         <span slot="title">{{ val.label }}</span>
       </el-menu-item>
-      <el-submenu index="2" v-for="val in hasChildren" :key="val.name">
+      <el-submenu v-for="val in hasChildren" :key="val.name" :index="val.name">
         <template slot="title">
           <i :class="`el-icon-${val.icon}`"></i>
           <span slot="title">{{ val.label }}</span>
         </template>
-        <el-menu-item-group v-for="val in val.children" :key="val.name">
-          <el-menu-item index="1-1">{{ val.label }}</el-menu-item>
+        <el-menu-item-group
+          v-for="val in val.children"
+          :key="val.name"
+          :index="val.name"
+        >
+          <el-menu-item :index="val.name">{{ val.label }}</el-menu-item>
         </el-menu-item-group>
       </el-submenu>
     </el-menu>
@@ -28,6 +32,7 @@
 .el-menu-vertical-demo:not(.el-menu--collapse) {
   width: 200px;
   min-height: 400px;
+  text-align: left;
 }
 </style>
 
