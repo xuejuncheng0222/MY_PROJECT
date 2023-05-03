@@ -11,7 +11,12 @@
       active-text-color="#ffd04b"
     >
       <h3 class="el-menu-h3">通用后台管理系统</h3>
-      <el-menu-item v-for="val in noChildren" :key="val.name" :index="val.name">
+      <el-menu-item
+        v-for="val in noChildren"
+        :key="val.name"
+        :index="val.name"
+        @click="checkMenu(val)"
+      >
         <i :class="`el-icon-${val.icon}`"></i>
         <span slot="title">{{ val.label }}</span>
       </el-menu-item>
@@ -25,7 +30,9 @@
           :key="val.name"
           :index="val.name"
         >
-          <el-menu-item :index="val.name">{{ val.label }}</el-menu-item>
+          <el-menu-item :index="val.name" @click="checkMenu(val)">{{
+            val.label
+          }}</el-menu-item>
         </el-menu-item-group>
       </el-submenu>
     </el-menu>
@@ -38,6 +45,7 @@
   min-height: 400px;
   text-align: left;
   height: 100vh;
+  cursor: pointer;
   .el-menu-h3 {
     font-size: 18px;
     text-align: center;
@@ -102,6 +110,16 @@ export default {
     },
     handleClose(key, keyPath) {
       console.log(key, keyPath);
+    },
+    //点击跳转相应界面
+    checkMenu(val) {
+      //去除双击出现报错问题
+      if (
+        this.$route.path !== val.path &&
+        !(this.$route.path === "/home" && val.path === "/")
+      ) {
+        this.$router.push(val.path);
+      }
     },
   },
   //计算属性

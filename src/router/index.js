@@ -16,6 +16,7 @@ export default new VueRouter({
       name: "主页",
       path: "/",
       component: Main,
+      redirect: "/home", //解决重定项问题
       children: [
         {
           name: "商品管理",

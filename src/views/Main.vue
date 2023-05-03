@@ -5,7 +5,9 @@
         <home-aside />
       </el-aside>
       <el-container>
-        <el-header>Header</el-header>
+        <el-header>
+          <home-header />
+        </el-header>
         <el-main>
           <router-view></router-view>
         </el-main>
@@ -16,6 +18,7 @@
 <script>
 //用组件的形式封装这个功能
 import HomeAside from "../components/HomeAside.vue";
+import HomeHeader from "../components/HomeHeader.vue";
 export default {
   data() {
     return {};
@@ -24,6 +27,7 @@ export default {
   props: {},
   components: {
     HomeAside,
+    HomeHeader,
   },
 };
 </script>
