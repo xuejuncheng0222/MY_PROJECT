@@ -6,7 +6,11 @@
       @open="handleOpen"
       @close="handleClose"
       :collapse="isCollapse"
+      background-color="#545c64"
+      text-color="#fff"
+      active-text-color="#ffd04b"
     >
+      <h3 class="el-menu-h3">通用后台管理系统</h3>
       <el-menu-item v-for="val in noChildren" :key="val.name" :index="val.name">
         <i :class="`el-icon-${val.icon}`"></i>
         <span slot="title">{{ val.label }}</span>
@@ -28,11 +32,17 @@
   </div>
 </template>
 
-<style>
+<style lang="less" scoped>
 .el-menu-vertical-demo:not(.el-menu--collapse) {
   width: 200px;
   min-height: 400px;
   text-align: left;
+  height: 100vh;
+  .el-menu-h3 {
+    font-size: 18px;
+    text-align: center;
+    color: #fff;
+  }
 }
 </style>
 
