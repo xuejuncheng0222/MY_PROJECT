@@ -1,10 +1,12 @@
 import Vue from "vue";
 import VueRouter from "vue-router";
 //引入用到的页面到路由中
-import HelloWorld from "../components/HelloWorld.vue";
 import Home from "../views/Home.vue";
 import User from "../views/User.vue";
 import Main from "../views/Main.vue";
+import Mall from "../views/MyMall.vue";
+import OtherPageOne from "../views/OtherPageOne.vue";
+import OtherPageTwo from "../views/OtherPageTwo.vue";
 
 Vue.use(VueRouter);
 
@@ -16,9 +18,9 @@ export default new VueRouter({
       component: Main,
       children: [
         {
-          name: "欢迎",
-          path: "/hello",
-          component: HelloWorld,
+          name: "商品管理",
+          path: "/mall",
+          component: Mall,
         },
         {
           name: "首页",
@@ -29,6 +31,16 @@ export default new VueRouter({
           name: "用户",
           path: "/user",
           component: User,
+        },
+        {
+          name: "页面1",
+          path: "/page1",
+          component: OtherPageOne,
+        },
+        {
+          name: "页面2",
+          path: "/page2",
+          component: OtherPageTwo,
         },
       ],
     },
