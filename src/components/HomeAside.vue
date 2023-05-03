@@ -41,11 +41,12 @@
 
 <style lang="less" scoped>
 .el-menu-vertical-demo:not(.el-menu--collapse) {
-  width: 200px;
+  // width: 200px;
   min-height: 400px;
   text-align: left;
   height: 100vh;
   cursor: pointer;
+  border-right-width: 0px;
   .el-menu-h3 {
     font-size: 18px;
     text-align: center;

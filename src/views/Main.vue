@@ -31,4 +31,8 @@ export default {
   },
 };
 </script>
-<style scoped></style>
+<style scoped>
+.el-header {
+  padding: 0;
+}
+</style>
