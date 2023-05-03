@@ -4,6 +4,7 @@
     <div class="l-content">
       <el-button icon="el-icon-menu" size="mini"></el-button>
       <!-- 面包屑 -->
+      <span class="text">首页</span>
     </div>
     <!-- 右侧 -->
     <div class="r-content"></div>
@@ -24,5 +25,10 @@ export default {
   display: flex;
   justify-content: space-between;
   align-items: center;
+  .text {
+    color: #fff;
+    font-size: 14px;
+    margin-left: 10px;
+  }
 }
 </style>
