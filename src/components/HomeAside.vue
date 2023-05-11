@@ -9,8 +9,10 @@
       background-color="#545c64"
       text-color="#fff"
       active-text-color="#ffd04b"
+      :collapse-transition="false"
     >
-      <h3 class="el-menu-h3">通用后台管理系统</h3>
+      <h3 class="el-menu-h3" v-if="!isCollapse">通用后台管理系统</h3>
+      <h3 class="el-menu-h3" v-else></h3>
       <el-menu-item
         v-for="val in noChildren"
         :key="val.name"
@@ -18,12 +20,12 @@
         @click="checkMenu(val)"
       >
         <i :class="`el-icon-${val.icon}`"></i>
-        <span slot="title">{{ val.label }}</span>
+        <span slot="title" v-if="!isCollapse">{{ val.label }}</span>
       </el-menu-item>
       <el-submenu v-for="val in hasChildren" :key="val.name" :index="val.name">
         <template slot="title">
           <i :class="`el-icon-${val.icon}`"></i>
-          <span slot="title">{{ val.label }}</span>
+          <span slot="title" v-if="!isCollapse">{{ val.label }}</span>
         </template>
         <el-menu-item-group
           v-for="val in val.children"
@@ -40,7 +42,7 @@
 </template>
 
 <style lang="less" scoped>
-.el-menu-vertical-demo:not(.el-menu--collapse) {
+.el-menu-vertical-demo {
   // width: 200px;
   min-height: 400px;
   text-align: left;
@@ -51,6 +53,8 @@
     font-size: 18px;
     text-align: center;
     color: #fff;
+    padding: 0 20px;
+    height: 30px;
   }
 }
 </style>
@@ -59,7 +63,6 @@
 export default {
   data() {
     return {
-      isCollapse: false,
       menuData: [
         {
           path: "/",
@@ -133,6 +136,10 @@ export default {
     // 有子菜单
     hasChildren() {
       return this.menuData.filter((item) => item.children);
+    },
+    //接收标签是否收起
+    isCollapse() {
+      return this.$store.state.tab.isCollapse;
     },
   },
 };

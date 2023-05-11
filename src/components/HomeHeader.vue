@@ -2,7 +2,11 @@
   <div class="header-content">
     <!-- 左侧 -->
     <div class="l-content">
-      <el-button icon="el-icon-menu" size="mini"></el-button>
+      <el-button
+        @click="collapseChange"
+        icon="el-icon-menu"
+        size="mini"
+      ></el-button>
       <!-- 面包屑 -->
       <span class="head-tap">首页</span>
     </div>
@@ -24,6 +28,11 @@
 export default {
   data() {
     return {};
+  },
+  methods: {
+    collapseChange() {
+      this.$store.commit("collapseMenu");
+    },
   },
 };
 </script>

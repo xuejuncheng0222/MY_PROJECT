@@ -1,7 +1,7 @@
 <template>
   <div>
     <el-container>
-      <el-aside width="210px">
+      <el-aside width="auto">
         <home-aside />
       </el-aside>
       <el-container>
@@ -34,5 +34,12 @@ export default {
 <style scoped>
 .el-header {
   padding: 0;
+}
+.el-aside {
+  transition: width 0.15s;
+  -webkit-transition: width 0.15s;
+  -moz-transition: width 0.15s;
+  -webkit-transition: width 0.15s;
+  -o-transition: width 0.15s;
 }
 </style>
