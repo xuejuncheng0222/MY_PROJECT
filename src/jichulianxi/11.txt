@@ -1,0 +1,6 @@
+      <div><img class="admin-card-img" src="@/assets/user.png" alt="" /></div>
+
+      <div class="admin-msg">
+        <p class="name">Admin</p>
+        <p class="position">超级管理员</p>
+      </div>
