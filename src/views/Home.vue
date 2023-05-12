@@ -4,7 +4,7 @@
       <el-col :span="8"
         ><div class="grid-content bg-purple">
           <AdminCard></AdminCard>
-          <AtCard /></div
+          <TableCard /></div
       ></el-col>
       <el-col :span="16"
         ><div class="grid-content bg-purple-light">22222</div></el-col
@@ -15,7 +15,7 @@
 
 <script>
 import AdminCard from "@/components/AdminCard.vue";
-
+import TableCard from "@/components/TableCard.vue";
 export default {
   data() {
     return {};
@@ -24,6 +24,7 @@ export default {
   methods: {},
   components: {
     AdminCard,
+    TableCard,
   },
 };
 </script>
