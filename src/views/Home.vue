@@ -16,9 +16,15 @@
 <script>
 import AdminCard from "@/components/AdminCard.vue";
 import TableCard from "@/components/TableCard.vue";
+import { getData } from "@/api/index";
 export default {
   data() {
     return {};
+  },
+  mounted() {
+    getData().then((data) => {
+      console.log(data);
+    });
   },
   props: {},
   methods: {},
