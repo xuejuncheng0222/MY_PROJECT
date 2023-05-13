@@ -5,7 +5,7 @@
       <img src="@/assets/user.png" alt="" />
       <div class="userinfo">
         <p class="name">Admin</p>
-        <p class="access">超级管理员</p>
+        <p class="access">{{ `${test}1234` }}</p>
       </div>
     </div>
     <div class="login-info">
@@ -58,8 +58,17 @@
 <script>
 export default {
   data() {
-    return {};
+    return {
+      // test: this.props.test,
+    };
+  },
+  mounted: {
+    testChuancan() {
+      console.log(this.test);
+    },
   },
   methods: {},
+  computed: {},
+  props: ["test"],
 };
 </script>
