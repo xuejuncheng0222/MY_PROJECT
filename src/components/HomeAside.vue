@@ -124,6 +124,9 @@ export default {
       ) {
         this.$router.push(val.path);
       }
+      //点击添加面包屑
+      this.$store.commit("changeTab", `${val.label}`);
+      //点击颜色变化
     },
   },
   //计算属性

@@ -24,7 +24,7 @@ export default {
     };
   },
   mounted() {
-    getData().then((data) => {
+    getData().then(() => {
       // console.log(data);
     });
   },

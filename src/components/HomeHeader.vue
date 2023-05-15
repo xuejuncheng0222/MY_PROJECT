@@ -8,7 +8,14 @@
         size="mini"
       ></el-button>
       <!-- 面包屑 -->
-      <span class="head-tap">首页</span>
+      <span
+        v-for="(val, index) in $store.state.tabArray"
+        :key="index"
+        class="head-tap"
+        >{{ val }}</span
+      >
+      <!-- <span class="head-tap">/ 首页</span>
+      <span class="head-tap">/ 首页</span> -->
     </div>
     <!-- 右侧 -->
     <div class="r-content">
@@ -27,7 +34,16 @@
 <script>
 export default {
   data() {
-    return {};
+    return {
+      //面包屑数据
+      tabArray: [],
+    };
+  },
+  created: {
+    changeTab() {
+      this.tabArray = this.$store.state.tabArray;
+      console.log(this.tabArray);
+    },
   },
   methods: {
     collapseChange() {

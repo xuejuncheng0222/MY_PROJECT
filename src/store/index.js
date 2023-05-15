@@ -7,10 +7,21 @@ import tab from "./tab";
 Vue.use(Vuex);
 
 const store = new Vuex.Store({
-  state: {},
+  state: {
+    tabArray: ["首页"],
+  },
   getters: {},
 
-  mutations: {},
+  mutations: {
+    changeTab(state, val) {
+      if (
+        !state.tabArray.includes(val) &&
+        !state.tabArray.includes(`/ ${val}`)
+      ) {
+        state.tabArray.push(`/ ${val}`);
+      }
+    },
+  },
 
   actions: {},
   // 模块化
