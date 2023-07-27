@@ -7,6 +7,7 @@ import Main from "../views/Main.vue";
 import Mall from "../views/MyMall.vue";
 import OtherPageOne from "../views/OtherPageOne.vue";
 import OtherPageTwo from "../views/OtherPageTwo.vue";
+import Test from "../views/Test.vue";
 
 Vue.use(VueRouter);
 
@@ -44,6 +45,11 @@ export default new VueRouter({
           component: OtherPageTwo,
         },
       ],
+    },
+    {
+      name: "test",
+      path: "/test",
+      component: Test,
     },
   ],
 });
