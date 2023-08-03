@@ -104,55 +104,25 @@ export default {
       let oldValue = "";
       let getUpMsg = "";
       let getDownMsg = "";
+      let trueValue = "";
       //支持输入的字符
-      const symbolArr = [
-        "!",
-        '"',
-        "#",
-        "$",
-        "%",
-        "&",
-        "'",
-        "(",
-        ")",
-        "*",
-        "+",
-        ",",
-        "-",
-        ".",
-        "/",
-        ":",
-        ";",
-        "<",
-        "=",
-        ">",
-        "?",
-        "@",
-        "[",
-        "\\",
-        "]",
-        "^",
-        "_",
-        "`",
-        "{",
-        "|",
-        "}",
-        "~",
-      ];
+
       ref.addEventListener("compositionstart", compositionStartHandler);
-      ref.addEventListener("keydown", (e) => {
-        console.log("keydown", e);
-      });
-      ref.addEventListener("keyup", (e) => {
-        console.log("keyup", e);
-      });
+      // ref.addEventListener("keydown", (e) => {
+      //   console.log("keydown", e);
+      // });
+      // ref.addEventListener("keyup", (e) => {
+      //   console.log("keyup", e);
+      // });
+      keyupOpen();
+      keydownOpen();
       //start处理
       function compositionStartHandler(e) {
-        console.log("start", e);
-        // keydownOpen();
+        getUpMsg = "";
+        getDownMsg = "";
         oldValue = ref.value;
-        keyupOpen();
-        keydownOpen();
+        // keyupOpen();
+        // keydownOpen();
         compositionendOpen();
       }
 
@@ -161,19 +131,23 @@ export default {
         ref.addEventListener("keydown", keydownHandler);
       }
       function keydownHandler(e) {
-        console.log("keydown", e);
+        console.log("down", e);
         if (e.code.includes("Digit")) {
           getDownMsg += e.code[5];
         }
         if (e.code.includes("Key")) {
           getDownMsg += e.code[3];
         }
-        //最后识别enter时，进行合并值
+        console.log("getDownMsg", getDownMsg);
         if (e.code === "Backspace") {
-          console.log(getUpMsg, getDownMsg, "------------------");
           //对getDownMsg，getUpMsg进行处理
           getDownMsg = getDownMsg.slice(0, -1);
           getUpMsg = getUpMsg.slice(0, -1);
+        }
+        if (e.code === "Enter") {
+          console.log(trueValue);
+          ref.value = trueValue;
+          trueValue = "";
         }
       }
       function stopKeyDown() {
@@ -186,8 +160,6 @@ export default {
       }
       function keyupHandler(e) {
         console.log("keyup", e);
-        //处理字符转换逻辑
-
         //剔除event.key="Process"，和其他键值的情况
         if (
           e.key !== "Process" &&
@@ -196,11 +168,19 @@ export default {
           //对数字字母进行提取,通过字符串的长度得到字母或者数字
           if (e.code.length === 6) {
             getUpMsg = getUpMsg + e.code[5];
+            trueValue = trueValue + e.code[5];
           } else {
             getUpMsg = getUpMsg + e.code[3];
+            trueValue = trueValue + e.code[3];
           }
-          console.log(getUpMsg);
         }
+        //处理冒号
+        if (e.key === ";") {
+          console.log("------------------------------------");
+          ref.value = ref.value + ":";
+          trueValue = trueValue + ":";
+        }
+        console.log("getUpMsg", getUpMsg);
       }
       function stopUp() {
         ref.removeEventListener("keyup", keyupHandler);
@@ -219,12 +199,15 @@ export default {
         ) {
           getUpMsg += getDownMsg[getDownMsg.length - 1];
         }
+        if (getDownMsg.length === 1 && !isNaN(getDownMsg)) {
+          getUpMsg += getDownMsg;
+        }
         ref.value = oldValue + getUpMsg;
         getUpMsg = "";
         getDownMsg = "";
         //取消监控
-        stopUp();
-        stopKeyDown();
+        // stopUp();
+        // stopKeyDown();
         stopCompositionEnd();
       }
       function stopCompositionEnd() {
@@ -238,6 +221,9 @@ export default {
       ref.addEventListener("keyup", (e) => {
         console.log("keyup", e);
       });
+      // ref.addEventListener("keyup", (e) => {
+      //   console.log("可以二次绑定");
+      // });
     },
     test(props) {
       let arr = ["："];
