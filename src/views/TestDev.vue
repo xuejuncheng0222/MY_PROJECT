@@ -14,8 +14,6 @@ export default {
   mounted() {
     this.addLisen(this.$refs.oinput);
     this.addLisen1(this.$refs.oo);
-    this.test(":");
-    this.test("：");
   },
   data() {
     return {
@@ -105,7 +103,6 @@ export default {
       let getUpMsg = "";
       let getDownMsg = "";
       let trueValue = "";
-      //支持输入的字符
 
       ref.addEventListener("compositionstart", compositionStartHandler);
       // ref.addEventListener("keydown", (e) => {
@@ -138,15 +135,16 @@ export default {
         if (e.code.includes("Key")) {
           getDownMsg += e.code[3];
         }
-        console.log("getDownMsg", getDownMsg);
+        // console.log("getDownMsg", getDownMsg);
         if (e.code === "Backspace") {
           //对getDownMsg，getUpMsg进行处理
           getDownMsg = getDownMsg.slice(0, -1);
           getUpMsg = getUpMsg.slice(0, -1);
         }
         if (e.code === "Enter") {
-          console.log(trueValue);
+          // console.log(trueValue);
           ref.value = trueValue;
+          // console.log(ref.value, "=======");
           trueValue = "";
         }
       }
@@ -159,7 +157,8 @@ export default {
         ref.addEventListener("keyup", keyupHandler);
       }
       function keyupHandler(e) {
-        console.log("keyup", e);
+        console.log("keyup", e, trueValue);
+        console.log(trueValue);
         //剔除event.key="Process"，和其他键值的情况
         if (
           e.key !== "Process" &&
@@ -176,11 +175,11 @@ export default {
         }
         //处理冒号
         if (e.key === ";") {
-          console.log("------------------------------------");
+          // console.log("------------------------------------");
           ref.value = ref.value + ":";
           trueValue = trueValue + ":";
         }
-        console.log("getUpMsg", getUpMsg);
+        // console.log("getUpMsg", getUpMsg);
       }
       function stopUp() {
         ref.removeEventListener("keyup", keyupHandler);
@@ -224,14 +223,6 @@ export default {
       // ref.addEventListener("keyup", (e) => {
       //   console.log("可以二次绑定");
       // });
-    },
-    test(props) {
-      let arr = ["："];
-      if (arr.includes(props)) {
-        console.log("yes");
-      } else {
-        console.log("false");
-      }
     },
   },
 };

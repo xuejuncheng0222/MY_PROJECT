@@ -1,3 +1,5 @@
+<!-- 测试组件传参 -->
+
 <template>
   <div>
     <p :style="sty">这是测试页</p>
