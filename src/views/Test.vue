@@ -15,7 +15,7 @@
       style="height: 40px; background-color: blue"
     ></input>
     <p>-----------------</p>
-    <TestVue msg1="薛俊成" msg2="李梦"></TestVue>
+    <TestVue msg1="薛俊成" msg2="李梦" newProps="test成功"></TestVue>
   </div>
 </template>
 

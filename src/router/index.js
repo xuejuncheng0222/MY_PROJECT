@@ -10,7 +10,7 @@ import OtherPageTwo from "../views/OtherPageTwo.vue";
 import Test from "../views/Test.vue";
 import TestDev from "../views/TestDev.vue";
 import TestRead from "../views/TestRead.vue";
-
+import TestReadtest from "../views/TestReadtest.vue";
 Vue.use(VueRouter);
 
 export default new VueRouter({
@@ -62,6 +62,11 @@ export default new VueRouter({
       name: "testRead",
       path: "/testRead",
       component: TestRead,
+    },
+    {
+      name: "testRead1",
+      path: "/testRead1",
+      component: TestReadtest,
     },
   ],
 });
